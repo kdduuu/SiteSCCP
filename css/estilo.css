@@ -47,6 +47,9 @@ body {
     border-radius: 10px;
     margin-top: 20px;
 }
+main{
+    flex: 1;
+}
 .footer-full-width {
     width: 100vw; 
     margin-left: calc(50% - 50vw);
@@ -54,4 +57,95 @@ body {
 }
 .footer-text{
     color: rgb(97, 97, 97);
+}
+.timeline-card {
+    position: relative;
+    color: white;
+    text-align: center;
+    height: 250px;
+    overflow: hidden;
+}
+.timeline-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+    transition: all 0.3s ease;
+}
+.timeline-card:hover img {
+    filter: brightness(30%);
+    transform: scale(1.05);
+}
+.timeline-card .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.timeline-card h3 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+.timeline-card p {
+    font-size: 1rem;
+}
+.player-card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+}
+
+.player-card:hover {
+    transform: scale(1.05);
+}
+
+.player-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #222;
+}
+
+.player-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.plus-icon {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+}
+
+hr {
+    border-color: #666;
+}
+.hero-section2 {
+    background: url('../img/elenco.jpg') no-repeat center center;
+    
+    background-size: cover; 
+    min-height: 500px;
+    
+    position: relative;
+    z-index: 1;
+}
+.hero-section2::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: -1; 
+}
+.hero-section2::before .container-fluid {
+    position: relative;
+    z-index: 2; 
 }
