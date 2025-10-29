@@ -149,3 +149,29 @@ hr {
     position: relative;
     z-index: 2; 
 }
+.formulario {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.8); /* Fundo escuro e translúcido */
+  overflow: hidden; /* Para esconder qualquer sobra da imagem */
+}
+
+/* Imagem de fundo */
+.formulario::before {
+  height: 600px;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('../img/corinthians1.png'); /* caminho da imagem */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 650px; /* aumenta ou diminui aqui */
+  filter: brightness(0) invert(1); /* deixa o escudo branco */
+  opacity: 0.5; /* transparência do escudo */
+  z-index: 0;
+}
+
+/* Conteúdo acima da imagem */
+.formulario > * {
+  position: relative;
+  z-index: 1;
+}

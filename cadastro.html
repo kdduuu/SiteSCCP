@@ -10,7 +10,7 @@
     <link rel="icon" href="../img/hino.png" type="image/png">
     
 </head>
-<body>
+<body class="bg-light">
     <header>
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
             <div class="container-fluid">
@@ -37,6 +37,57 @@
                 </div>
             </div>
   </nav>
+
+<br/>
+<br/>
+<br/>
+
+  <section>
+  <div class="container mt-5 col-lg-5">
+    <form class="formulario p-4 bg-dark text-light rounded shadow">
+      <h3 class="text-center mb-4 text-light">Crie sua conta</h3>
+
+      <div class="mb-3">
+        <label for="nome" class="form-label text-light">Nome</label>
+        <input type="text" class="form-control bg-dark text-light border-white" id="nome">
+      </div>
+
+      <div class="mb-3">
+        <label for="cpf" class="form-label text-light">CPF</label>
+        <input type="text" class="form-control bg-dark text-light border-white" id="cpf">
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label text-light">E-mail</label>
+        <input type="email" class="form-control bg-dark text-light border-white" id="email">
+      </div>
+
+      <div class="mb-3">
+        <label for="senha" class="form-label text-light">Senha</label>
+        <input type="password" class="form-control bg-dark text-light border-white" id="senha">
+      </div>
+
+      <div class="mb-3">
+        <label for="confirme" class="form-label text-light">Confirme a senha</label>
+        <input type="password" class="form-control bg-dark text-light border-white" id="confirme">
+      </div>
+
+      <!-- Mensagem de aviso -->
+      <div class="alert alert-light text-center mt-4" role="alert">
+        Ao clicar em <strong>Criar Conta</strong> você concorda com os
+        <strong>Termos de Adesão do Fiel Torcedor</strong> e agora sua alma nos pertence!
+      </div>
+
+      <div class="d-grid" >
+        <button type="submit" class="btn btn-light fw-bold">CRIAR CONTA</button>
+      </div>
+
+      <p class="text-center mt-3 text-light">
+        Já tem cadastro? <a href="#" class="text-white fw-semibold">Clique aqui para acessar</a>
+      </p>
+    </form>
+  </div>
+  </section>
 
 <footer class="bg-dark text-white pt-3 pb-4 mt-5 footer-full-width">
     
