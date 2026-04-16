@@ -6,7 +6,6 @@ body {
     padding-top: 70px;
     background-color: #f8f9fa;
     width: 100%;
-    height: 100%;
     margin: 0;
     padding: 0 0 0 0;
     overflow-x: hidden; 
@@ -51,6 +50,7 @@ body {
 main{
     flex: 1;
 }
+
 .footer-full-width {
     width: 100vw; 
     margin-left: calc(50% - 50vw);
