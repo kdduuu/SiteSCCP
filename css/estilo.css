@@ -2,13 +2,21 @@
   height: 400px;
   object-fit: cover;
 }
+html, body {
+    min-height: 100%;
+}
 body {
+    display: flex;
+    flex-direction: column;
     padding-top: 70px;
     background-color: #f8f9fa;
     width: 100%;
     margin: 0;
     padding: 0 0 0 0;
     overflow-x: hidden; 
+}
+.page-content {
+    flex: 1;
 }
 .hero-section {
     background: url('../img/banner.jpeg') no-repeat center center;
@@ -130,10 +138,9 @@ hr {
 }
 .hero-section2 {
     background: url('../img/elenco.jpg') no-repeat center center;
-    
-    background-size: cover; 
+    background-size: 100% auto;
+    background-color: #000;
     min-height: 500px;
-    
     position: relative;
     z-index: 1;
 }
