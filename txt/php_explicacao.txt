@@ -1,0 +1,304 @@
+EXPLICAÇÃO DOS PRINCIPAIS ITENS USADOS NOS ARQUIVOS PHP
+
+1) Conexão com o banco de dados MySQL
+
+$host = 'localhost';
+- Indica o servidor onde o MySQL está rodando.
+- No XAMPP, normalmente o MySQL está no mesmo computador, por isso "localhost".
+
+$db = 'site_sccp';
+- Nome do banco de dados que será usado.
+- Precisa existir no MySQL e ter a tabela correta criada.
+
+$user = 'root';
+- Usuário do banco de dados.
+- No XAMPP, o padrão costuma ser "root" sem senha.
+
+$pass = '';
+- Senha do usuário do banco.
+- Se estiver vazio, o campo fica em branco.
+
+$charset = 'utf8mb4';
+- Conjunto de caracteres usado para armazenar texto.
+- "utf8mb4" é recomendado porque suporta acentos e emojis.
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+- DSN significa "Data Source Name".
+- É a string usada para informar ao PDO como se conectar ao banco.
+- Aqui diz: usar MySQL, servidor localhost, banco site_sccp e charset utf8mb4.
+
+$options = [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES => false,
+];
+- Configurações extras para o PDO.
+- PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+  - Faz o PDO lançar uma exceção se ocorrer erro no banco.
+  - Isso ajuda a capturar o erro com try/catch.
+- PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+  - Define que os resultados de consultas virão como arrays associativos.
+  - Exemplo: $row['nome'] em vez de $row[0].
+- PDO::ATTR_EMULATE_PREPARES => false
+  - Diz para o PDO usar prepared statements reais do MySQL.
+  - Isso aumenta segurança contra SQL Injection.
+
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+} catch (PDOException $e) {
+    die('Erro de conexão: ' . htmlspecialchars($e->getMessage()));
+}
+- Tenta criar a conexão com o banco.
+- Se falhar, captura a exceção PDOException e interrompe o script.
+- htmlspecialchars() protege a mensagem para não enviar HTML malicioso.
+
+2) Verificar o método de requisição
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: cadastro.html');
+    exit;
+}
+- $_SERVER['REQUEST_METHOD'] indica se o navegador usou GET, POST, etc.
+- O script de cadastro só deve ser acessado por POST, que é o envio do formulário.
+- Se não for POST, redireciona para o formulário e encerra o script.
+
+3) Receber dados do formulário
+
+$nome = trim($_POST['nome'] ?? '');
+- $_POST['nome'] pega o valor do campo "nome" enviado pelo formulário.
+- O operador ?? '' garante que, se o campo não existir, o valor será uma string vazia.
+- trim() remove espaços no início e no fim.
+
+$cpfInput = trim($_POST['cpf'] ?? '');
+- Recebe o CPF enviado.
+- Pode vir com pontos e traços.
+
+$email = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+- Valida se o valor é um e-mail correto.
+- Se for e-mail válido, retorna o e-mail.
+- Se não for, retorna false.
+
+$senha = $_POST['senha'] ?? '';
+$confirma = $_POST['confirme'] ?? '';
+- Recebe senha e confirmação de senha.
+- Não usamos trim() porque senha pode ser sensível a espaços.
+
+4) Limpar e formatar o CPF
+
+$cpfDigits = preg_replace('/\D+/', '', $cpfInput);
+- Remove tudo que não for dígito do CPF.
+- Exemplo: transforma "123.456.789-00" em "12345678900".
+
+$cpf = (strlen($cpfDigits) === 11)
+    ? preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpfDigits)
+    : '';
+- Verifica se existem exatamente 11 dígitos.
+- Se sim, formata o CPF com pontos e traço.
+- Se não, deixa em branco.
+
+5) Validação dos dados
+
+if (!$nome || !$cpf || !$email || !$senha || !$confirma) {
+    $erro = 'Preencha todos os campos corretamente.';
+}
+- Checa se algum campo obrigatório está vazio.
+- "!$nome" significa que o valor é vazio ou falso.
+
+elseif (strlen($cpfDigits) !== 11) {
+    $erro = 'CPF inválido. Use 11 dígitos.';
+}
+- Verifica se o CPF tem 11 dígitos numéricos.
+
+elseif ($senha !== $confirma) {
+    $erro = 'As senhas não coincidem.';
+}
+- Confere se a senha e a confirmação são exatamente iguais.
+
+elseif (strlen($senha) < 6) {
+    $erro = 'A senha deve ter pelo menos 6 caracteres.';
+}
+- Exige tamanho mínimo da senha.
+
+6) Criar hash de senha
+
+$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+- Gera um hash seguro da senha.
+- Não salvamos a senha em texto simples no banco.
+- PASSWORD_DEFAULT usa um algoritmo forte e atual.
+
+7) Inserir usuário no banco
+
+$sql = 'INSERT INTO usuarios (nome, cpf, email, senha_hash, criado_em) VALUES (:nome, :cpf, :email, :senha_hash, NOW())';
+$stmt = $pdo->prepare($sql);
+- Prepara uma consulta SQL com parâmetros nomeados.
+- Os parâmetros ":nome", ":cpf", ":email" e ":senha_hash" são substituídos depois.
+- Isso evita SQL Injection.
+
+$stmt->execute([
+    ':nome' => $nome,
+    ':cpf' => $cpf,
+    ':email' => $email,
+    ':senha_hash' => $senhaHash,
+]);
+- Executa a consulta usando os valores enviados pelo usuário.
+- O valor de senha já está protegido com hash.
+
+8) Tratamento de erro no banco
+
+catch (PDOException $e) {
+    if (isset($e->errorInfo[1]) && $e->errorInfo[1] === 1062) {
+        $erro = 'CPF ou e-mail já cadastrado.';
+    } else {
+        $erro = 'Erro ao salvar: ' . htmlspecialchars($e->getMessage());
+    }
+}
+- Captura erro de banco.
+- Código 1062 significa violação de chave única (duplicidade).
+- Exemplo: CPF ou e-mail já registrados.
+- Outros erros mostram uma mensagem genérica com segurança.
+
+9) Redirecionamento no final
+
+if (!empty($erro)) {
+    header('Location: cadastro.html?status=error&message=' . rawurlencode($erro));
+    exit;
+}
+- Se houver erro, redireciona para o cadastro com mensagem codificada na URL.
+- rawurlencode() transforma espaços e caracteres especiais para URL.
+
+10) Sessão de usuário no login.php
+
+session_start();
+- Inicia o uso de sessão PHP.
+- Permite guardar informações do usuário para outras páginas.
+
+11) Receber e validar login
+
+$login = trim($_POST['login'] ?? '');
+$senha = $_POST['senha'] ?? '';
+- O campo "login" pode ser e-mail ou CPF.
+- O campo "senha" vem separado.
+
+$email = filter_var($login, FILTER_VALIDATE_EMAIL);
+- Verifica se o login é um e-mail válido.
+
+$cpfDigits = preg_replace('/\D+/', '', $login);
+- Remove caracteres não numéricos do login para testar CPF.
+
+12) Definir consulta de usuário
+
+if ($email) {
+    $sql = 'SELECT id, nome, cpf, email, senha_hash, DATE_FORMAT(criado_em, "%Y-%m-%d") AS data_cadastro FROM usuarios WHERE email = :login LIMIT 1';
+    $params = [':login' => $email];
+} elseif (strlen($cpfDigits) === 11) {
+    $cpf = preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '$1.$2.$3-$4', $cpfDigits);
+    $sql = 'SELECT id, nome, cpf, email, senha_hash, DATE_FORMAT(criado_em, "%Y-%m-%d") AS data_cadastro FROM usuarios WHERE cpf = :login LIMIT 1';
+    $params = [':login' => $cpf];
+}
+- Se for e-mail, busca usuário pelo e-mail.
+- Se for CPF com 11 dígitos, formata e busca pelo CPF.
+- Usa LIMIT 1 para pegar apenas um registro.
+- Usa DATE_FORMAT(criado_em, "%Y-%m-%d") para converter o campo criado_em em um formato de data compatível com a exibição do sistema.
+
+13) Executar consulta e verificar senha
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
+$userData = $stmt->fetch();
+
+if (!$userData || !password_verify($senha, $userData['senha_hash'])) {
+    header('Location: sessao.html?status=error&message=' . rawurlencode('E-mail/CPF ou senha inválidos.'));
+    exit;
+}
+- password_verify() compara a senha enviada com o hash salvo no banco.
+- Se não existir usuário ou a senha estiver errada, retorna erro.
+
+14) Guardar dados na sessão
+
+$_SESSION['user_id'] = $userData['id'];
+$_SESSION['user_name'] = $userData['nome'];
+- Armazena o ID e o nome do usuário na sessão.
+- Isso permite reconhecer o usuário em outras páginas.
+- Também armazena e-mail, CPF e data de cadastro para exibir na área restrita do torcedor.
+
+15) Logout e destruição da sessão
+
+session_start();
+- Inicia a sessão para poder limpar os dados armazenados.
+
+$_SESSION = [];
+- Limpa todos os dados da sessão em memória.
+
+if (ini_get('session.use_cookies')) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params['path'], $params['domain'],
+        $params['secure'], $params['httponly']
+    );
+}
+- Remove o cookie de sessão do navegador quando ele estiver sendo usado.
+
+session_destroy();
+- Encerra a sessão no servidor.
+- Garante que o usuário não ficará mais autenticado.
+
+header('Location: sessao.html?status=success&message=' . rawurlencode('Logout realizado com sucesso.'));
+- Redireciona para a página de login/cadastro após o logout.
+
+16) Redirecionar após login
+
+header('Location: sessao.html?status=success');
+exit;
+- Envia o usuário de volta para a página de sessão com indicação de sucesso.
+
+PALAVRAS IMPORTANTES QUE APARECEM NO CÓDIGO
+
+PDO:
+- Significa "PHP Data Objects".
+- É a forma recomendada de trabalhar com bancos de dados em PHP.
+- Ele unifica o acesso a vários bancos e permite consultas seguras.
+
+PDOException:
+- Tipo de erro lançado pelo PDO quando algo dá errado no banco.
+- Pode ser usado em try/catch para tratar falhas.
+
+header('Location: ...'):
+- Redireciona o navegador para outra página.
+- Deve ser chamado antes de qualquer saída HTML.
+
+exit;
+- Termina a execução do script imediatamente.
+- Evita que o PHP continue rodando depois do redirecionamento.
+
+password_hash():
+- Cria um hash seguro da senha.
+- Deve ser usado sempre que salvar senha no banco.
+
+password_verify():
+- Verifica se a senha digitada corresponde ao hash armazenado.
+- Retorna true ou false.
+
+filter_var(..., FILTER_VALIDATE_EMAIL):
+- Valida se um texto é um e-mail com formato correto.
+- Retorna o próprio e-mail se válido, ou false se inválido.
+
+preg_replace('/\D+/', '', ...):
+- Remove tudo o que não for número.
+- Muito útil para limpar CPF, telefone e outros campos numéricos.
+
+rawurlencode():
+- Transforma texto em formato seguro para URL.
+- Exemplo: espaço vira %20.
+
+NOW():
+- Função SQL do MySQL que retorna data e hora atuais.
+- No INSERT, coloca o momento atual no campo criado_em.
+
+CONCLUSÃO
+
+Esse arquivo de explicação ajuda você a entender o que cada parte faz:
+- conexões e configurações do banco
+- validação de dados enviados pelo formulário
+- segurança na senha e no SQL
+- como o login funciona por e-mail ou CPF
+- o uso de sessão para manter o usuário logado

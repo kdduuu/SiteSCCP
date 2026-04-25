@@ -1,0 +1,367 @@
+﻿DOCUMENTAÇÃO OFICIAL - SITE SCCP (Sport Club Corinthians Paulista)
+
+
+1. ANÁLISE DE REQUISITOS - OBJETIVOS DO SISTEMA
+
+
+1.1 Contexto do Problema
+
+
+Este site foi criado com o objetivo de oferecer acessibilidade, praticidade e facilidade de navegação para os torcedores do Sport Club Corinthians Paulista. Observa-se que muitos sites esportivos apresentam estruturas complexas e informações organizadas de forma pouco intuitiva, o que pode dificultar o acesso para usuários que não possuem familiaridade com aspectos técnicos ou com conteúdos mais aprofundados do futebol.
+Diante desse cenário, o sistema proposto busca apresentar informações de forma clara e organizada, permitindo que um torcedor casual possa se ambientar facilmente com o clube. O site disponibiliza conteúdos fundamentais para o conhecimento inicial sobre a equipe, incluindo informações sobre sua história, conquistas e elenco atual.
+Dessa forma, o sistema busca proporcionar uma experiência simples e acessível, utilizando uma interface intuitiva que facilite a navegação e a compreensão das informações apresentadas.
+
+
+1.2 Propósito do Sistema
+
+
+O sistema tem como propósito apresentar informações relevantes sobre o Sport Club Corinthians Paulista, incluindo aspectos históricos e atuais do clube. A aplicação busca oferecer ao usuário uma experiência informativa e dinâmica, permitindo que o visitante adquira conhecimentos básicos sobre o time por meio de uma interface organizada e de fácil utilização.
+Além disso, o sistema também oferece um nível de interatividade com o usuário por meio das páginas de cadastro e login. Nessas áreas, o visitante poderá realizar seu registro no sistema e acessar uma área personalizada, representando simbolicamente a participação como “Fiel Torcedor”.
+
+
+Objetivos do Projeto
+
+
+O sistema possui dois objetivos principais:
+* Divulgação de informações do clube
+O site apresenta um conjunto de informações relevantes sobre o Corinthians, incluindo história, conquistas e elenco atual. Dessa forma, busca-se despertar o interesse dos usuários e ampliar o conhecimento sobre o clube para diferentes públicos.
+* Interatividade com o usuário
+O sistema permite que o usuário realize cadastro e autenticação, possibilitando o acesso a uma área personalizada dentro do site. Essa funcionalidade promove maior interação entre o usuário e a aplicação.
+* Observações
+A aplicação foi desenvolvida com foco em clareza, objetividade, responsividade e facilidade de uso, permitindo que usuários com diferentes níveis de conhecimento tecnológico possam navegar pelo sistema sem dificuldades.
+Além disso, o projeto tem como finalidade demonstrar o funcionamento de um sistema web completo, integrando tecnologias de Front-end, Back-end e Banco de Dados, permitindo o cadastro e autenticação de usuários dentro da aplicação.
+
+
+1.3 Benefícios do Sistema
+
+
+O sistema apresenta diversos benefícios relacionados à organização de informações e à interação com os usuários.
+
+
+Organização das Informações
+O site centraliza conteúdos importantes relacionados ao clube, como:
+
+
+* história
+* conquistas
+* elenco atual
+* informações institucionais
+
+
+Essa organização permite que o usuário encontre facilmente informações relevantes sobre o Corinthians.
+
+
+Interação com Usuários
+Por meio do sistema de cadastro, os torcedores podem criar uma conta dentro da aplicação, permitindo o acesso a uma área personalizada após a autenticação no sistema.
+Essa funcionalidade promove maior envolvimento do usuário com a plataforma.
+
+
+Acessibilidade e Usabilidade
+A aplicação foi projetada para ser:
+* prática
+* intuitiva
+* acessível
+A interface do sistema busca facilitar a navegação e garantir que usuários de diferentes perfis consigam utilizar o site de maneira simples e eficiente.
+
+
+2. ANÁLISE DE REQUISITOS - ESCOPO
+
+
+2.1 Finalidades
+Finalidade prática do sistema:
+O sistema foi desenvolvido com a finalidade de apresentar informações sobre o Sport Club Corinthians Paulista, por meio de uma navegação dinâmica entre páginas e utilizando um layout simples e de fácil compreensão.
+Nas páginas de cadastro e login, o sistema possibilita que o usuário tenha acesso a uma área exclusiva com seu nome após realizar o processo de cadastro e autenticação, promovendo maior integração do torcedor com a aplicação.
+
+
+2.2 Funcionalidades
+Principais funções do sistema:
+* Visualização de informações sobre o clube
+* Navegação entre páginas do site
+* Cadastro de novos usuários
+* Autenticação de usuários no sistema
+* Redirecionamento para a área do torcedor após o login
+* Exibição de mensagem personalizada para o usuário
+
+
+2.3 Informações Manipuladas pelo Sistema
+Dados trabalhados pelo sistema:
+* Nome do usuário
+* CPF
+* E-mail
+* Senha
+* Data de cadastro
+
+
+Esses dados serão:
+* Armazenados em um banco de dados
+* Utilizados no processo de autenticação dos usuários no sistema
+
+
+2.4 Plataforma do Sistema
+
+
+O sistema consiste em uma aplicação web, acessível por meio de navegadores de internet. A aplicação foi projetada para funcionar em diferentes navegadores e dispositivos, garantindo compatibilidade entre navegadores e adaptação a diferentes tamanhos de tela, oferecendo assim um design responsivo.
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
+* Linguagem de marcação
+* HTML
+* Linguagem de estilo
+* CSS
+* Framework
+* Bootstrap
+* Linguagem de programação
+* PHP
+* Sistema Gerenciador de Banco de Dados (SGBD)
+* MySQL
+
+
+3. ANÁLISE DE REQUISITOS – REQUISITOS
+
+
+Requisitos Funcionais
+SCCP-RF-001 – Cadastro de Usuário
+O sistema deve permitir o cadastro de novos usuários por meio do preenchimento das seguintes informações:
+* Nome
+* CPF
+* E-mail
+* Senha
+SCCP-RF-002 – Autenticação de Usuário
+O sistema deve permitir que usuários previamente cadastrados realizam autenticação utilizando:
+* E-mail ou CPF
+* Senha
+
+
+SCCP-RF-003 – Validação de Dados
+O sistema deve realizar validações durante o processo de cadastro e autenticação, incluindo:
+* Verificação se o usuário já existe no sistema
+* Verificação da validade dos dados informados pelo usuário
+SCCP-RF-004 – Área do Torcedor
+Após a autenticação bem-sucedida, o sistema deve:
+* Redirecionar o usuário para a página Área do Torcedor
+* Exibir uma mensagem personalizada contendo o nome do usuário
+SCCP-RF-005 – Navegação entre Páginas
+O sistema deve permitir a navegação entre as diferentes páginas do site, incluindo:
+* Timão!
+* História
+* Conquistas
+* Elenco
+* Cadastro
+* Login
+* Área do Torcedor
+
+
+Requisitos Não Funcionais
+
+
+SCCP-RNF-001 – Usabilidade
+O sistema deve apresentar uma interface:
+* Simples
+* De fácil navegação
+* Intuitiva para os usuários
+SCCP-RNF-002 – Portabilidade
+O sistema deve ser compatível com os principais navegadores web, incluindo:
+* Google Chrome
+* Microsoft Edge
+* Mozilla Firefox
+* Opera
+SCCP-RNF-003 – Segurança
+O sistema deve garantir a proteção das informações dos usuários, incluindo:
+* Armazenamento dos dados em banco de dados
+* Proteção das credenciais de acesso (senha)
+SCCP-RNF-004 – Desempenho
+O sistema deve apresentar bom desempenho durante sua utilização, garantindo:
+* Carregamento otimizado das páginas
+* Consultas eficientes ao banco de dados
+SCCP-RNF-005 – Escalabilidade
+O sistema deve permitir futuras expansões e melhorias, possibilitando:
+* Evolução contínua da aplicação
+* Implementação de novas funcionalidades no sistema
+
+
+4. DESCRIÇÃO FUNCIONAL DA APLICAÇÃO
+
+
+4.1 Estrutura do Sistema
+Páginas do Site:
+* index.html
+* historia.html
+* conquistas.html
+* elenco.html
+* cadastro.html
+* sessao.html
+* fiel_torcedor.php
+
+
+4.2 Funcionamento das Páginas
+O que cada página proporciona ao usuário:
+
+
+* Página inicial ("Timão!")
+- Apresenta o time oferecendo informações importantes a respeito do clube como Torcida, Estádio e Hino.
+* Página História ("História") 
+- Apresenta a história do clube evidenciando pontos cruciais para o Corinthians ser o que é hoje, de uma forma organizada e simplificada.
+* Páginas Conquistas ("Conquistas") 
+- Apresenta uma linha do tempo contendo os títulos mais relevantes da história do clube de forma dinâmica e recreativa.
+* Página Elenco ("Elenco")
+- Apresenta o elenco atual do clube de 2026.1, ambientando o usuário aos jogadores e suas respectivas funções dentro do time.
+* Página Login ("Login")
+- Apresenta a página de autenticação de login. Caso o usuário não possua uma conta, ele pode ser redirecionado para a "Área de Cadastro".
+* Página Cadastro ("Cadastro")
+- Apresenta a página que servirá para que o usuário efetue o cadastramento da sua conta como "Fiél Torcedor!" para que assim ele consiga autenticar sua conta na página de "Login".
+* Página Área do Torcedor ("Área do Torcedor")
+-  Apresenta a página que é disponibilizada logo após a autenticação do usuário (Efetuada na área de "Login") com informações exclusivas para o recém "Fiél Torcedor".
+
+
+4.3 Fluxo de Navegação
+O sistema sobre o Sport Club Corinthians Paulista é composto por 7 páginas, sendo acessível para o usuário! Todas sendo simples, direta e compátivel (SCCP-RNF-001).
+
+
+1. Timão! (Página inicial) 
+Acessando o sistema, o usuário será direcionado para a página "TIMÃO!".
+* Apresentação do clube.
+* Mídias dinâmicas.
+Destaques para aspectos como:
+* Torcida.
+* Estádio.
+* Hino.
+A partir dessa página, o usuário pode seguir para o restante das páginas principais do Site (SCCP-RF-005).
+
+
+2. História (História sobre o clube)
+Quando o usuário selecionar o menu de "HISTÓRIA", ele será direcionado para a página que exibe: 
+* Eventos históricos fundamentais para a formação do que o clube representa hoje.
+* Separados em datas e épocas essenciais para o seu crescimento histórico.
+* Apresentado de forma cronológica.
+POSSIBILIDADES DO ATOR:
+* Voltar para a página "TIMÃO!".
+* Seguir para as seguintes páginas do site: "CONQUISTAS", "ELENCO" e "LOGIN". (SCCP-RF-005).
+
+
+3, Conquistas (Conquistas do clube)
+Adentrando o menu de "CONQUISTAS", o usuário terá acesso a alguns dos títulos mais importantes da história do clube, títulos estes apresentados cronologicamente de maneira recreativa, (SCCP-RNF-001). 
+POSSIBILIDADES DO ATOR: 
+* Voltar para a página "TIMÃO!" e "HISTÓRIA".
+* Seguir para as seguintes páginas do site: "ELENCO" e "LOGIN". (SCCP-RF-005).
+
+
+4. Elenco (Elenco atual do clube)
+Seguindo para o menu de "ELENCO", a página tem como papel apresentar o elenco referente ao 2026.1 do Sport Club Corinthians Paulista, apresentando os jogadores com suas respectivas funções inseridas em um "CARD".
+POSSIBILIDADES DO ATOR:
+* Voltar para a página "TIMÃO!", "HISTÓRIA" e "CONQUISTAS".
+* Seguir para a autenticação da sua conta em "LOGIN".
+
+
+5. Login (Autenticação da conta - SCCP-RF-001)
+Prosseguindo para a página que contém a parte cadastral do site, nos é introduzida a página de “LOGIN”, que servirá para verificar se há uma conta vinculada ao usuário consultando o banco de dados do sistema.
+POSSIBILIDADES DO ATOR: 
+- Voltar para as páginas anteriores do site ("TIMÃO!", "HISTÓRIA", "CONQUISTAS", "ELENCO"). (SCCP-RF-003)
+- O sistema verificará se o ator possui uma conta vinculada ao seu CPF ou E-MAIL.
+Se sim: 
+- O ator será redirecionado para a área do torcedor.
+Se não:
+- O ator terá a possibilidade de criar uma conta na página de "CADASTRO".
+
+
+5.1 Cadastro (Página destinada a criação da conta - SCCP-RF-002)
+Aqui o usuário terá a possibilidade de criar uma conta, colocando as informações necessárias para a efetuação de cadastro. Assim possibilitando ao usuário realizar a autenticação da sua conta "LOGIN".
+POSSIBILIDADE DO ATOR: 
+- Voltar para as páginas anteriores do site ("TIMÃO!", "HISTÓRIA", "CONQUISTAS", "ELENCO"). 
+- Voltar para a página de "LOGIN" para efetuar a autenticação da conta e ser redirecionado para a "ÁREA DO TORCEDOR".
+
+
+6. ÁREA DO TORCEDOR (Área exclusiva para usuários do site - SCCP-RF-004)
+Está página é exclusiva para quem criou uma conta e logo após realizou login na página de mesmo nome ("LOGIN"). Nesta página, o sistema irá buscar informações do cadastro utilizando o banco de dados para ferramenta de consulta para que ele possa criar campos exclusivos com as informações fornecidas pelo ATOR. Assim tendo uma página inclusiva para o usuário. 
+POSSIBILIDADE DO ATOR:
+* Voltar para o menu e páginas principais do site.
+
+
+7. Comportamento Geral da Interface
+Durante toda a navegação no sistema, a interface mantém um padrão consistente, garantindo uma experiência fluida e intuitiva para o usuário.
+Os menus de navegação permanecem visíveis em todas as páginas, permitindo acesso rápido às principais seções do site (SCCP-RF-005).
+A interface é responsiva, adaptando-se a diferentes tamanhos de tela, como dispositivos móveis, tablets e desktops, garantindo usabilidade em diversos contextos (SCCP-RNF-001, SCCP-RNF-002).
+Além disso, os elementos textuais e visuais seguem padrões de organização e legibilidade, facilitando a compreensão das informações apresentadas e promovendo uma navegação acessível e eficiente (SCCP-RNF-001).
+Dessa forma, o usuário consegue realizar suas ações com clareza, mantendo uma interação simples, consistente e de fácil utilização ao longo de todo o sistema.
+
+
+5. DIAGRAMAS DO SISTEMA
+
+
+5.1 Diagrama de Casos de uso 
+Este diagrama tem como objetivo representar as interações entre o usuário e o sistema, evidenciando as principais funcionalidades disponibilizadas pela aplicação.
+No sistema desenvolvido, foi identificado um ator principal denominado Usuário, que representa qualquer visitante que interage com a aplicação.
+As principais funcionalidades associadas a esse ator são:
+* Cadastro de usuário (SCCP-RF-001)
+* Autenticação de usuário (SCCP-RF-002)
+* Validação de dados (SCCP-RF-003)
+* Acesso à área do torcedor (SCCP-RF-004)
+* Navegação entre páginas do sistema (SCCP-RF-005)
+O diagrama demonstra como o usuário interage com essas funcionalidades, destacando o fluxo de ações disponíveis dentro do sistema.
+  
+5.2 Fluxograma
+O fluxo inicia-se com o acesso do usuário à página inicial do sistema, a partir da qual ele pode navegar até a área de login ou cadastro.
+Durante o processo de autenticação, o sistema realiza a verificação dos dados informados pelo usuário. Caso as informações estejam corretas, o usuário é redirecionado para a área do torcedor, onde é exibida uma mensagem personalizada.
+Caso contrário, o sistema retorna uma mensagem de erro, permitindo que o usuário tente novamente ou realize o cadastro.
+Esse fluxo evidencia o comportamento do sistema diante das ações do usuário, garantindo coerência com os requisitos funcionais definidos.
+
+5.3 Diagrama Entidade - Relacionamento (DER)
+Com base nos requisitos do sistema, foi identificada uma entidade principal denominada Usuários, responsável pelo armazenamento das informações necessárias para o cadastro e autenticação dos usuários na aplicação.
+A entidade Usuários possui os seguintes atributos, refletindo também os nomes reais usados no banco de dados e no código PHP:
+* id (chave primária)
+* nome
+* cpf
+* email
+* senha_hash
+* criado_em
+Os atributos cpf e email possuem restrição de unicidade no sistema, garantindo que não haja duplicidade de registros para um mesmo usuário.
+O sistema apresenta uma estrutura simples, composta por uma única entidade, visto que suas funcionalidades estão centradas no gerenciamento de usuários e no controle de acesso.
+Essa modelagem garante coerência com o escopo do sistema, permitindo futuras expansões, como a adição de novas entidades e funcionalidades, sem comprometer a estrutura atual.
+
+
+6. MODELAGEM DO BANCO DE DADOS
+
+
+6.1 Modelo Conceitual
+O modelo conceitual do banco de dados tem como objetivo representar, de forma abstrata, os dados que serão utilizados pelo sistema, sem considerar aspectos técnicos de implementação, como linguagem de programação ou sistema gerenciador de banco de dados.
+Com base nos requisitos definidos anteriormente, foi identificada uma entidade principal denominada Usuários, responsável por representar os indivíduos que interagem com o sistema por meio das funcionalidades de cadastro e autenticação.
+A entidade Usuários possui como finalidade armazenar as informações necessárias para o gerenciamento de acesso à aplicação, permitindo que o sistema realize o controle de entrada e a personalização da experiência do usuário.
+Os principais dados associados a essa entidade são:
+* nome
+* cpf
+* email
+* senha (armazenada como hash no banco de dados)
+* data de cadastro
+Essas informações são essenciais para o funcionamento do sistema, sendo utilizadas nos processos de registro de novos usuários, validação de login e identificação do usuário dentro da plataforma.
+O modelo conceitual apresentado é simples, composto por uma única entidade, o que está diretamente relacionado ao escopo atual do sistema, focado no gerenciamento de usuários. No entanto, essa estrutura permite futuras expansões, possibilitando a adição de novas entidades e funcionalidades sem comprometer a organização dos dados.
+
+
+6.2 Modelo Lógico
+O modelo lógico do banco de dados tem como objetivo representar a estrutura dos dados de forma mais detalhada, aproximando-se da implementação real, porém ainda sem considerar diretamente os comandos específicos da linguagem SQL.
+A partir do modelo conceitual definido anteriormente, a entidade Usuários foi transformada em uma tabela denominada “usuarios”, responsável pelo armazenamento das informações dos usuários cadastrados no sistema.
+A tabela “usuarios” é composta pelos seguintes atributos:
+* id: do tipo INT, responsável por identificar unicamente cada registro na tabela, sendo definido como chave primária (Primary Key).
+* nome: do tipo VARCHAR, utilizado para armazenar o nome do usuário.
+* cpf: do tipo VARCHAR, utilizado para armazenar o CPF do usuário, possuindo restrição de unicidade (UNIQUE), garantindo que não haja duplicidade.
+* email: do tipo VARCHAR, utilizado para autenticação no sistema, também possuindo restrição de unicidade (UNIQUE).
+* senha_hash: do tipo VARCHAR, responsável por armazenar o hash seguro da senha do usuário.
+* criado_em: do tipo DATETIME, utilizado para registrar a data e hora de criação do registro no sistema, com valor padrão CURRENT_TIMESTAMP.
+A chave primária da tabela é o atributo id, garantindo a identificação única de cada usuário. Além disso, as restrições de unicidade aplicadas aos campos cpf e email asseguram a integridade dos dados e evitam duplicidades no sistema.
+Essa estrutura lógica permite o correto funcionamento das operações de cadastro e autenticação, sendo fundamental para a validação de usuários e acesso à área do torcedor.
+
+
+6.3 Modelo Físico
+O modelo físico do banco de dados corresponde à etapa em que a estrutura lógica definida anteriormente é preparada para implementação em um Sistema Gerenciador de Banco de Dados (SGBD), considerando aspectos técnicos e de execução.
+Para o desenvolvimento deste sistema, será utilizado o SGBD MySQL, responsável por gerenciar o armazenamento, a manipulação e a integridade dos dados.
+A estrutura física do banco de dados será composta pela tabela usuarios, contendo os atributos definidos no modelo lógico, juntamente com suas respectivas restrições, como chave primária e unicidade.
+A implementação dessa estrutura será realizada por meio de comandos SQL, responsáveis pela criação da tabela e definição de suas características, garantindo o correto funcionamento das operações de cadastro e autenticação de usuários.
+Além disso, o modelo físico permitirá a aplicação de regras de integridade, como a não duplicidade de dados nos campos cpf e email, bem como a identificação única de cada usuário por meio da chave primária id.
+Essa etapa é fundamental para tornar o sistema funcional, possibilitando a integração com a linguagem de programação PHP, que será responsável por realizar as operações de inserção, consulta e validação dos dados no banco de dados.
+
+
+7. CONSIDERAÇÕES FINAIS
+
+
+O desenvolvimento deste projeto possibilitou a aplicação prática dos conceitos de análise e modelagem de sistemas, integrando conhecimentos teóricos com a construção de uma solução funcional.
+Ao longo da elaboração do sistema, foi possível compreender a importância de uma boa definição de requisitos, bem como da organização estrutural do sistema por meio de etapas como levantamento de escopo, modelagem de dados e definição do fluxo de navegação.
+A construção da documentação contribuiu diretamente para a clareza do funcionamento do sistema, permitindo uma visão ampla de sua estrutura, desde a interação do usuário até o armazenamento e manipulação dos dados.
+Além disso, o projeto evidencia a integração entre diferentes camadas do desenvolvimento web, envolvendo tecnologias de front-end, back-end e banco de dados, caracterizando uma aplicação completa.
+Como proposta futura, o sistema pode ser expandido com a adição de novas funcionalidades, como edição de perfil, recuperação de senha, áreas mais personalizadas para o usuário, entre outras melhorias que ampliem a interatividade e a experiência do torcedor.
+Por fim, o projeto demonstra a importância da modelagem como etapa fundamental no desenvolvimento de sistemas, servindo como base sólida para a implementação e garantindo maior organização, eficiência e escalabilidade da aplicação.
